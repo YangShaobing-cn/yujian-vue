@@ -95,7 +95,7 @@ import {
   SPACE_TYPE_MAP,
   SPACE_TYPE_OPTIONS,
 } from '../../constants/space.ts'
-import { formatSize } from '../../utils'
+import { formatSize } from '../../utils/index.js'
 
 const columns = [
   {
