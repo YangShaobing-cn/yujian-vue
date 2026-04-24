@@ -1,6 +1,7 @@
 // @ts-ignore
 /* eslint-disable */
 import request from '@/request'
+import requestUpload from '@/requestUpload' // 引入 upload 专用的 request 实例
 
 /** deletePicture POST /api/picture/delete */
 export async function deletePictureUsingPost(
@@ -216,7 +217,7 @@ export async function updatePictureUsingPost(
   body: API.PictureUpdateRequest,
   options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseBoolean_>('/api/picture/update', {
+  return requestUpload<API.BaseResponseBoolean_>('/api/picture/update', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -256,7 +257,7 @@ export async function uploadPictureUsingPost(
     }
   })
 
-  return request<API.BaseResponsePictureVO_>('/api/picture/upload', {
+  return requestUpload<API.BaseResponsePictureVO_>('/api/picture/upload', {
     method: 'POST',
     params: {
       ...params,
@@ -272,7 +273,7 @@ export async function uploadPictureByBatchUsingPost(
   body: API.PictureUploadByBatchRequest,
   options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseInt_>('/api/picture/upload/batch', {
+  return requestUpload<API.BaseResponseInt_>('/api/picture/upload/batch', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -287,7 +288,7 @@ export async function uploadPictureByUrlUsingPost(
   body: API.PictureUploadRequest,
   options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponsePictureVO_>('/api/picture/upload/url', {
+  return requestUpload<API.BaseResponsePictureVO_>('/api/picture/upload/url', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

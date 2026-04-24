@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import { message } from "ant-design-vue";
 
@@ -5,10 +6,12 @@ import { message } from "ant-design-vue";
 const DEV_BASE_URL = "http://localhost:8123";
 const PROD_BASE_URL = "http://106.12.149.95";
 // 创建 Axios 实例
+
+
+// 专门用于上传的 Axios 实例
 const myAxios = axios.create({
-  // 空地址可解决生成环境下的跨域问题
   baseURL: DEV_BASE_URL,
-  timeout: 10000,
+  timeout: 150000, // 上传专用超时时间 30 秒
   withCredentials: true,
 });
 

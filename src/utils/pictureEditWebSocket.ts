@@ -12,15 +12,13 @@ export default class PictureEditWebSocket {
   /**
    * 初始化 WebSocket 连接
    */
-  connect() : void {
+  connect(): void {
     const DEV_BASE_URL = "ws://localhost:8123";
-    const PROD_BASE_URL = "ws://106.12.149.95";
+    // 空地址可解决生成环境下的跨域问题
+    const PROD_BASE_URL = "";
     // 线上地址
-    // const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    // const wsBaseUrl = `${protocol}//${window.location.host}/api/ws`;
-    // const url: string = `${wsBaseUrl}/picture/edit?pictureId=${this.pictureId}`;
     // const PROD_BASE_URL = "ws://81.69.229.63";
-    const url: string = `${PROD_BASE_URL}/api/ws/picture/edit?pictureId=${this.pictureId}`
+    const url: string = `${DEV_BASE_URL}/api/ws/picture/edit?pictureId=${this.pictureId}`
     this.socket = new WebSocket(url)
 
     // 设置携带 cookie
@@ -102,80 +100,3 @@ export default class PictureEditWebSocket {
     }
   }
 }
-
-
-// export default class PictureEditWebSocket {
-//   private pictureId: number;
-//   private socket: WebSocket | null;
-//   private eventHandlers: any;
-
-//   constructor(pictureId: number) {
-//     this.pictureId = pictureId;
-//     this.socket = null;
-//     this.eventHandlers = {};
-//   }
-
-//   connect(): void {
-//     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-//     const wsBaseUrl = `${protocol}//${window.location.host}/api/ws`;
-//     const url: string = `${wsBaseUrl}/picture/edit?pictureId=${this.pictureId}`;
-    
-//     this.socket = new WebSocket(url);
-//     this.socket.binaryType = 'blob';
-
-//     this.socket.onopen = () => {
-//       console.log('WebSocket 连接已建立');
-//       this.triggerEvent('open');
-//     };
-
-//     this.socket.onmessage = (event) => {
-//       try {
-//         const message = JSON.parse(event.data);
-//         console.log('收到消息:', message);
-//         this.triggerEvent(message.type, message);
-//       } catch (error) {
-//         console.error('消息解析错误:', error);
-//       }
-//     };
-
-//     this.socket.onclose = (event) => {
-//       console.log('WebSocket 连接已关闭:', event);
-//       this.triggerEvent('close', event);
-//     };
-
-//     this.socket.onerror = (error) => {
-//       console.error('WebSocket 发生错误:', error);
-//       this.triggerEvent('error', error);
-//     };
-//   }
-
-//   disconnect() {
-//     if (this.socket) {
-//       this.socket.close();
-//       console.log('WebSocket 连接已手动关闭');
-//     }
-//   }
-
-//   sendMessage(message: object) {
-//     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-//       this.socket.send(JSON.stringify(message));
-//       console.log('消息已发送:', message);
-//     } else {
-//       console.error('WebSocket 未连接，无法发送消息:', message);
-//     }
-//   }
-
-//   on(type: string, handler: (data?: any) => void) {
-//     if (!this.eventHandlers[type]) {
-//       this.eventHandlers[type] = [];
-//     }
-//     this.eventHandlers[type].push(handler);
-//   }
-
-//   triggerEvent(type: string, data?: any) {
-//     const handlers = this.eventHandlers[type];
-//     if (handlers) {
-//       handlers.forEach((handler: any) => handler(data));
-//     }
-//   }
-// }

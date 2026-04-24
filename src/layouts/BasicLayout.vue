@@ -11,7 +11,7 @@
         </a-layout-content>
       </a-layout>
       <a-layout-footer class="footer">
-        <!-- <a href="https://www.codefather.cn" target="_blank"> </a> -->
+        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">鲁ICP备2025189542号-1</a>
       </a-layout-footer>
     </a-layout>
   </div>
