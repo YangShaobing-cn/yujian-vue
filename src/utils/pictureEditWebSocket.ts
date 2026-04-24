@@ -12,17 +12,11 @@ export default class PictureEditWebSocket {
   /**
    * 初始化 WebSocket 连接
    */
-<<<<<<< HEAD:src/utils/pictureEditWebSocket.ts
-  connect(): void {
-    const DEV_BASE_URL = "ws://localhost:8123";
-    // 空地址可解决生成环境下的跨域问题
-    const PROD_BASE_URL = "";
-=======
+
   connect() {
-    const DEV_BASE_URL = "ws://106.12.149.95:80";
-    // 线上地址
-    // const PROD_BASE_URL = "ws://81.69.229.63";
-    const url: string = `${DEV_BASE_URL}/api/ws/picture/edit?pictureId=${this.pictureId}`
+    const base =
+      window.__APP_RUNTIME_CONFIG__?.wsPictureEditBaseUrl ?? 'ws://106.12.149.95:80'
+    const url: string = `${base}/api/ws/picture/edit?pictureId=${this.pictureId}`
     this.socket = new WebSocket(url)
 
     // 设置携带 cookie

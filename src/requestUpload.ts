@@ -1,19 +1,14 @@
+import axios from 'axios'
+import { message } from 'ant-design-vue'
 
-import axios from "axios";
-import { message } from "ant-design-vue";
+const rc = window.__APP_RUNTIME_CONFIG__
 
-// 区分开发和生产环境
-const DEV_BASE_URL = "http://localhost:8123";
-const PROD_BASE_URL = "http://106.12.149.95";
-// 创建 Axios 实例
-
-
-// 专门用于上传的 Axios 实例
+// 专门用于上传的 Axios 实例（baseURL 见 public/request.js 的 apiUploadBaseUrl）
 const myAxios = axios.create({
-  baseURL: DEV_BASE_URL,
-  timeout: 150000, // 上传专用超时时间 30 秒
-  withCredentials: true,
-});
+  baseURL: rc?.apiUploadBaseUrl ?? rc?.apiBaseUrl ?? 'http://106.12.149.95:80',
+  timeout: rc?.apiUploadTimeout ?? 150000,
+  withCredentials: rc?.apiWithCredentials ?? true,
+})
 
 // 全局请求拦截器
 myAxios.interceptors.request.use(

@@ -1,15 +1,13 @@
-import axios from "axios";
-import { message } from "ant-design-vue";
+import axios from 'axios'
+import { message } from 'ant-design-vue'
 
-const DEV_BASE_URL = "http://106.12.149.95:80";
-// const PROD_BASE_URL = "http://81.69.229.63";
-// 创建 Axios 实例
+const rc = window.__APP_RUNTIME_CONFIG__
+// 默认值与 public/request.js 中一致（脚本未加载时仍可运行）
 const myAxios = axios.create({
-  // 空地址可解决生成环境下的跨域问题
-  baseURL: DEV_BASE_URL,
-  timeout: 10000,
-  withCredentials: true,
-});
+  baseURL: rc?.apiBaseUrl ?? 'http://106.12.149.95:80',
+  timeout: rc?.apiTimeout ?? 10000,
+  withCredentials: rc?.apiWithCredentials ?? true,
+})
 
 // 全局请求拦截器
 myAxios.interceptors.request.use(
@@ -47,4 +45,4 @@ myAxios.interceptors.response.use(
   },
 )
 
-export default myAxios;
+export default myAxios
