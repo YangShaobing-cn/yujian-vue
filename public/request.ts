@@ -1,14 +1,8 @@
 import axios from "axios";
 import { message } from "ant-design-vue";
 
-// 区分开发和生产环境
-<<<<<<< HEAD:src/request.ts
-const DEV_BASE_URL = "http://localhost:8123";
-const PROD_BASE_URL = "http://106.12.149.95";
-=======
 const DEV_BASE_URL = "http://106.12.149.95:80";
 // const PROD_BASE_URL = "http://81.69.229.63";
->>>>>>> 30d63275f094af8a55b882bf4a63044005e40817:public/request.ts
 // 创建 Axios 实例
 const myAxios = axios.create({
   // 空地址可解决生成环境下的跨域问题
