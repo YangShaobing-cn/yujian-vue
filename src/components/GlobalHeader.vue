@@ -5,7 +5,7 @@
         <router-link to="/">
           <div class="title-bar">
             <img class="logo" src="../assets/logo.png" alt="logo" />
-            <div class="title">壁纸素材壁纸库</div>
+            <div class="title">壁纸素材库</div>
           </div>
         </router-link>
       </a-col>
