@@ -1,6 +1,37 @@
 // @ts-ignore
 /* eslint-disable */
+import type { AxiosResponse } from 'axios'
 import request from '@/request'
+import requestUpload from '@/requestUpload'
+
+/** uploadUserAvatar POST /api/user/upload/avatar (multipart file) */
+export async function uploadUserAvatarFileUsingPost(
+  file: Blob,
+  options?: { [key: string]: any }
+): Promise<AxiosResponse<API.BaseResponseString_>> {
+  const formData = new FormData()
+  formData.append('file', file)
+  return requestUpload('/api/user/upload/avatar', {
+    method: 'POST',
+    data: formData,
+    ...(options || {}),
+  }) as Promise<AxiosResponse<API.BaseResponseString_>>
+}
+
+/** uploadUserAvatarByUrl POST /api/user/upload/avatar (JSON body，远端图片地址) */
+export async function uploadUserAvatarByUrlUsingPost(
+  body: { fileUrl: string },
+  options?: { [key: string]: any }
+): Promise<AxiosResponse<API.BaseResponseString_>> {
+  return request<API.BaseResponseString_>('/api/user/upload/avatar', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  })
+}
 
 /** addUser POST /api/user/add */
 export async function addUserUsingPost(body: API.UserAddRequest, options?: { [key: string]: any }) {
@@ -140,7 +171,7 @@ export async function updateUserUsingPost(
   body: API.UserUpdateRequest,
   options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseBoolean_>('/api/user/update', {
+  return request<API.BaseResponseBoolean_>('/api/user/userUpdate', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

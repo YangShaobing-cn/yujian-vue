@@ -5,5 +5,5 @@
 ;(function () {
   window.__APP_RUNTIME_CONFIG__ = window.__APP_RUNTIME_CONFIG__ || {}
   var c = window.__APP_RUNTIME_CONFIG__
-  if (c.wsPictureEditBaseUrl == null) c.wsPictureEditBaseUrl = 'ws://106.12.149.95:80'
+  if (c.wsPictureEditBaseUrl == null) c.wsPictureEditBaseUrl = 'ws://localhost:8123'
 })()

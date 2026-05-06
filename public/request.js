@@ -5,7 +5,7 @@
 ;(function () {
   window.__APP_RUNTIME_CONFIG__ = window.__APP_RUNTIME_CONFIG__ || {}
   var c = window.__APP_RUNTIME_CONFIG__
-  if (c.apiBaseUrl == null) c.apiBaseUrl = 'http://106.12.149.95:80'
+  if (c.apiBaseUrl == null) c.apiBaseUrl = 'http://localhost:8123'
   // 若上传走独立网关，可改为例如 'http://localhost:8123'
   if (c.apiUploadBaseUrl == null) c.apiUploadBaseUrl = c.apiBaseUrl
   if (c.apiTimeout == null) c.apiTimeout = 10000

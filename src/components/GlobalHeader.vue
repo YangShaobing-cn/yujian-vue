@@ -29,6 +29,12 @@
               <template #overlay>
                 <a-menu>
                   <a-menu-item>
+                    <router-link to="/my_detail">
+                      <UserOutlined />
+                      我的详情
+                    </router-link>
+                  </a-menu-item>
+                  <a-menu-item>
                     <router-link to="/my_space">
                       <UserOutlined />
                       我的空间
@@ -53,7 +59,8 @@
 <script lang="ts" setup>
 import { computed, h, ref } from 'vue'
 import { HomeOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons-vue'
-import { MenuProps, message } from 'ant-design-vue'
+import { message } from 'ant-design-vue'
+import type { MenuProps } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import { useLoginUserStore } from '@/stores/useLoginUserStore.ts'
 import { userLogoutUsingPost } from '@/api/userController.ts'
@@ -99,7 +106,7 @@ const originItems = [
 const filterMenus = (menus = [] as MenuProps['items']) => {
   return menus?.filter((menu) => {
     // 管理员才能看到 /admin 开头的菜单
-    if (menu?.key?.startsWith('/admin')) {
+    if (typeof menu?.key === 'string' && menu.key.startsWith('/admin')) {
       const loginUser = loginUserStore.loginUser
       if (!loginUser || loginUser.userRole !== 'admin') {
         return false
@@ -121,7 +128,7 @@ router.afterEach((to, from, next) => {
 })
 
 // 路由跳转事件
-const doMenuClick = ({ key }) => {
+const doMenuClick = ({ key }: { key: string }) => {
   router.push({
     path: key,
   })

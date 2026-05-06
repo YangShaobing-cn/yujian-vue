@@ -10,6 +10,7 @@ import AddPictureBatchPage from '@/pages/AddPictureBatchPage.vue'
 import SpaceManagePage from '@/pages/admin/SpaceManagePage.vue'
 import AddSpacePage from '@/pages/AddSpacePage.vue'
 import MySpacePage from '@/pages/MySpacePage.vue'
+import MyDetailPage from '@/pages/MyDetailPage.vue'
 import SpaceDetailPage from '@/pages/SpaceDetailPage.vue'
 import SearchPicturePage from '@/pages/SearchPicturePage.vue'
 import SpaceAnalyzePage from '@/pages/SpaceAnalyzePage.vue'
@@ -80,6 +81,11 @@ const router = createRouter({
       path: '/my_space',
       name: '我的空间',
       component: MySpacePage,
+    },
+    {
+      path: '/my_detail',
+      name: '我的详情',
+      component: MyDetailPage,
     },
     {
       path: '/space/:id',

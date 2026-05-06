@@ -4,7 +4,7 @@ import { message } from 'ant-design-vue'
 const rc = window.__APP_RUNTIME_CONFIG__
 // 默认值与 public/request.js 中一致（脚本未加载时仍可运行）
 const myAxios = axios.create({
-  baseURL: rc?.apiBaseUrl ?? 'http://106.12.149.95:80',
+  baseURL: rc?.apiBaseUrl ?? 'http://127.0.0.1:8123',
   timeout: rc?.apiTimeout ?? 10000,
   withCredentials: rc?.apiWithCredentials ?? true,
 })

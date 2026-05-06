@@ -5,7 +5,7 @@ const rc = window.__APP_RUNTIME_CONFIG__
 
 // 专门用于上传的 Axios 实例（baseURL 见 public/request.js 的 apiUploadBaseUrl）
 const myAxios = axios.create({
-  baseURL: rc?.apiUploadBaseUrl ?? rc?.apiBaseUrl ?? 'http://106.12.149.95:80',
+  baseURL: rc?.apiUploadBaseUrl ?? rc?.apiBaseUrl ?? 'http://127.0.0.1:8123',
   timeout: rc?.apiUploadTimeout ?? 150000,
   withCredentials: rc?.apiWithCredentials ?? true,
 })
