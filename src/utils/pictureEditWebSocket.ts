@@ -15,6 +15,7 @@ export default class PictureEditWebSocket {
 
   connect() {
     const base =
+      // window.__APP_RUNTIME_CONFIG__?.wsPictureEditBaseUrl ?? ''
       window.__APP_RUNTIME_CONFIG__?.wsPictureEditBaseUrl ?? 'ws://127.0.0.1:8123'
     const url: string = `${base}/api/ws/picture/edit?pictureId=${this.pictureId}`
     this.socket = new WebSocket(url)
